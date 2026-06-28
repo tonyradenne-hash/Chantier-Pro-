@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+            <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -11,6 +11,7 @@
             --light: #f5f5f5;
             --white: #ffffff;
             --text: #333333;
+            --success: #2a9d8f;
         }
 
         body {
@@ -51,19 +52,19 @@
             background-color: var(--dark);
             color: var(--white);
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
         }
 
         .hero h1 {
-            font-size: 40px;
+            font-size: 36px;
             margin-bottom: 10px;
         }
 
         .hero p {
-            font-size: 18px;
+            font-size: 16px;
             color: #ccc;
             max-width: 600px;
-            margin: 0 auto 30px auto;
+            margin: 0 auto;
         }
 
         .container {
@@ -77,6 +78,75 @@
             margin-bottom: 30px;
         }
 
+        /* Style du calculateur interactif */
+        .calc-box {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 0 auto 50px auto;
+            border-top: 5px solid var(--primary);
+        }
+
+        .calc-group {
+            margin-bottom: 20px;
+        }
+
+        .calc-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .calc-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .calc-group input:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .calc-btn {
+            width: 100%;
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 14px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .calc-btn:hover {
+            background-color: var(--primary);
+            color: var(--dark);
+        }
+
+        .result-box {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #e8f5e9;
+            border-left: 5px solid var(--success);
+            border-radius: 4px;
+            display: none;
+        }
+
+        .result-title {
+            font-weight: bold;
+            color: #1b5e20;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -88,16 +158,6 @@
             padding: 25px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            margin-top: 0;
-            color: var(--dark);
         }
 
         .badge {
@@ -131,11 +191,6 @@
             font-weight: bold;
         }
 
-        .btn:hover {
-            background-color: var(--primary);
-            color: var(--dark);
-        }
-
         footer {
             text-align: center;
             padding: 40px 20px;
@@ -150,40 +205,47 @@
     <header>
         <div class="logo">👷‍♂️ ChantierPro</div>
         <nav>
-            <a href="#outils">Outils</a>
+            <a href="#calculateur">Calculateur</a>
             <a href="#boutique">Boutique</a>
         </nav>
     </header>
 
     <section class="hero">
         <h1>Les outils numériques des artisans</h1>
-        <p>Gagnez du temps sur vos chantiers avec nos calculateurs gratuits et nos modèles de documents professionnels prêts à l'emploi.</p>
+        <p>Gagnez du temps sur vos chantiers avec nos outils gratuits et nos modèles professionnels.</p>
     </section>
 
-    <div class="container" id="outils">
-        <h2>📊 Nos Calculateurs Gratuits</h2>
-        <div class="grid">
-            <div class="card">
-                <span class="badge free">Gratuit</span>
-                <h3>Calculateur de Béton</h3>
-                <p>Calculez rapidement le volume de béton nécessaire pour vos dalles, fondations ou poteaux.</p>
-                <a href="#" class="btn">Utiliser l'outil</a>
+    <!-- SECTION CALCULATEUR INTERACTIF -->
+    <div class="container" id="calculateur">
+        <h2>📊 Calculateur de Volume de Béton (Gratuit)</h2>
+        
+        <div class="calc-box">
+            <div class="calc-group">
+                <label for="length">Longueur de la dalle (en mètres) :</label>
+                <input type="number" id="length" placeholder="Ex: 5" step="0.1" min="0">
             </div>
-            <div class="card">
-                <span class="badge free">Gratuit</span>
-                <h3>Calculateur de Gravier</h3>
-                <p>Estimez le tonnage de gravier requis pour vos allées, cours ou travaux de terrassement.</p>
-                <a href="#" class="btn">Utiliser l'outil</a>
+            
+            <div class="calc-group">
+                <label for="width">Largeur de la dalle (en mètres) :</label>
+                <input type="number" id="width" placeholder="Ex: 4" step="0.1" min="0">
             </div>
-            <div class="card">
-                <span class="badge free">Gratuit</span>
-                <h3>Calculateur de Clôture</h3>
-                <p>Déterminez le nombre de poteaux, de panneaux et de grillage pour vos fermetures.</p>
-                <a href="#" class="btn">Utiliser l'outil</a>
+            
+            <div class="calc-group">
+                <label for="thickness">Épaisseur (en centimètres) :</label>
+                <input type="number" id="thickness" placeholder="Ex: 12" min="0">
+            </div>
+            
+            <button class="calc-btn" onclick="calculateConcrete()">Calculer le besoin</button>
+            
+            <div class="result-box" id="results">
+                <div class="result-title">🎯 Résultats estimatifs :</div>
+                <p><strong>Volume total :</strong> <span id="vol-res">0</span> m³</p>
+                <p><strong>Nombre de sacs (35kg) nécessaires :</strong> <span id="sacs-res">0</span> sacs <br><small>(Sur une base standard de 350kg / m³)</small></p>
             </div>
         </div>
     </div>
 
+    <!-- BOUTIQUE -->
     <div class="container" id="boutique">
         <h2>🛒 Notre Boutique de Documents Pro</h2>
         <div class="grid">
@@ -199,12 +261,6 @@
                 <p>Générez vos factures en quelques clics avec calcul automatique de la TVA et des totaux.</p>
                 <a href="#" class="btn" style="background-color: var(--primary); color: var(--dark);">Découvrir (9,90 €)</a>
             </div>
-            <div class="card">
-                <span class="badge pro">Premium</span>
-                <h3>Suivi des Dépenses de Chantier</h3>
-                <p>Maîtrisez vos coûts, suivez vos achats de matériaux et calculez votre rentabilité réelle.</p>
-                <a href="#" class="btn" style="background-color: var(--primary); color: var(--dark);">Découvrir (12,90 €)</a>
-            </div>
         </div>
     </div>
 
@@ -212,5 +268,34 @@
         <p>&copy; 2026 ChantierPro. Tous droits réservés.</p>
     </footer>
 
+    <!-- CODE LOGIQUE DU CALCULATEUR -->
+    <script>
+        function calculateConcrete() {
+            // Récupération des valeurs saisies
+            const length = parseFloat(document.getElementById('length').value);
+            const width = parseFloat(document.getElementById('width').value);
+            const thickness = parseFloat(document.getElementById('thickness').value);
+            
+            // Vérification si les champs sont bien remplis
+            if (isNaN(length) || isNaN(width) || isNaN(thickness) || length <= 0 || width <= 0 || thickness <= 0) {
+                alert("Veuillez saisir des valeurs valides supérieures à 0.");
+                return;
+            }
+            
+            // Calcul du volume : Longueur x Largeur x Epaisseur (convertie en mètres)
+            const thicknessInMeters = thickness / 100;
+            const volume = length * width * thicknessInMeters;
+            
+            // Calcul des sacs de ciment de 35kg (Dosage standard : 10 sacs par m³ pour du 350kg/m³)
+            const bagsNeeded = Math.ceil(volume * 10);
+            
+            // Affichage des résultats arrondis à 2 décimales
+            document.getElementById('vol-res').innerText = volume.toFixed(2);
+            document.getElementById('sacs-res').innerText = bagsNeeded;
+            
+            // Rendre le bloc de résultat visible
+            document.getElementById('results').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
