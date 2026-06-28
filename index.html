@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChantierPro - Les outils numériques des artisans</title>
+    <style>
+        :root {
+            --primary: #ffb703;
+            --dark: #1d1d1d;
+            --light: #f5f5f5;
+            --white: #ffffff;
+            --text: #333333;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .hero {
+            background-color: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #ccc;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--dark);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            font-size: 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .badge.free {
+            background-color: #e3f2fd;
+            color: #0d47a1;
+        }
+
+        .badge.pro {
+            background-color: #fff3e0;
+            color: #e65100;
+        }
+
+        .btn {
+            display: block;
+            text-align: center;
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: var(--primary);
+            color: var(--dark);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: var(--dark);
+            color: #888;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">👷‍♂️ ChantierPro</div>
+        <nav>
+            <a href="#outils">Outils</a>
+            <a href="#boutique">Boutique</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Les outils numériques des artisans</h1>
+        <p>Gagnez du temps sur vos chantiers avec nos calculateurs gratuits et nos modèles de documents professionnels prêts à l'emploi.</p>
+    </section>
+
+    <div class="container" id="outils">
+        <h2>📊 Nos Calculateurs Gratuits</h2>
+        <div class="grid">
+            <div class="card">
+                <span class="badge free">Gratuit</span>
+                <h3>Calculateur de Béton</h3>
+                <p>Calculez rapidement le volume de béton nécessaire pour vos dalles, fondations ou poteaux.</p>
+                <a href="#" class="btn">Utiliser l'outil</a>
+            </div>
+            <div class="card">
+                <span class="badge free">Gratuit</span>
+                <h3>Calculateur de Gravier</h3>
+                <p>Estimez le tonnage de gravier requis pour vos allées, cours ou travaux de terrassement.</p>
+                <a href="#" class="btn">Utiliser l'outil</a>
+            </div>
+            <div class="card">
+                <span class="badge free">Gratuit</span>
+                <h3>Calculateur de Clôture</h3>
+                <p>Déterminez le nombre de poteaux, de panneaux et de grillage pour vos fermetures.</p>
+                <a href="#" class="btn">Utiliser l'outil</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="boutique">
+        <h2>🛒 Notre Boutique de Documents Pro</h2>
+        <div class="grid">
+            <div class="card">
+                <span class="badge pro">Premium</span>
+                <h3>Modèle de Devis Professionnel</h3>
+                <p>Un modèle Excel et PDF clair et conforme pour rassurer vos clients et signer plus de chantiers.</p>
+                <a href="#" class="btn" style="background-color: var(--primary); color: var(--dark);">Découvrir (14,90 €)</a>
+            </div>
+            <div class="card">
+                <span class="badge pro">Premium</span>
+                <h3>Facture Automatique</h3>
+                <p>Générez vos factures en quelques clics avec calcul automatique de la TVA et des totaux.</p>
+                <a href="#" class="btn" style="background-color: var(--primary); color: var(--dark);">Découvrir (9,90 €)</a>
+            </div>
+            <div class="card">
+                <span class="badge pro">Premium</span>
+                <h3>Suivi des Dépenses de Chantier</h3>
+                <p>Maîtrisez vos coûts, suivez vos achats de matériaux et calculez votre rentabilité réelle.</p>
+                <a href="#" class="btn" style="background-color: var(--primary); color: var(--dark);">Découvrir (12,90 €)</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 ChantierPro. Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>
