@@ -364,3 +364,95 @@
     </script>
 </body>
 </html>
+<!-- CALCULATEUR REVÊTEMENT MURAL -->
+<div class="calculator-card">
+    <h3>📐 Calculateur Revêtement Mural (Peinture / Papier Peint)</h3>
+    <p class="subtitle">Calculez la surface réelle en déduisant facilement les portes et les fenêtres.</p>
+    
+    <div class="input-group">
+        <label>Largeur totale des murs à couvrir (en mètres) :</label>
+        <input type="number" id="wallWidth" placeholder="Ex: 15" step="0.1">
+    </div>
+    
+    <div class="input-group">
+        <label>Hauteur sous plafond (en mètres) :</label>
+        <input type="number" id="wallHeight" placeholder="Ex: 2.5" step="0.1">
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed #dde1e5; margin: 15px 0;">
+    <h4 style="color: #ffb703; margin-bottom: 10px;">🚪 Ouvertures à déduire :</h4>
+
+    <div class="input-group">
+        <label>Nombre de portes standard (2m x 0.8m) :</label>
+        <input type="number" id="doorCount" value="0" min="0">
+    </div>
+
+    <div class="input-group">
+        <label>Nombre de fenêtres standard (1.2m x 1m) :</label>
+        <input type="number" id="windowCount" value="0" min="0">
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed #dde1e5; margin: 15px 0;">
+
+    <div class="input-group">
+        <label>Rendement du produit (m² par litre ou par rouleau) :</label>
+        <input type="number" id="productYield" placeholder="Ex: 10" step="0.1">
+    </div>
+
+    <div class="input-group">
+        <label>Nombre de couches nécessaires :</label>
+        <input type="number" id="coatCount" value="2" min="1">
+    </div>
+
+    <button onclick="calculateWallCovering()">Calculer le besoin</button>
+
+    <div id="wallResult" class="result-box" style="display:none;">
+        <p>Surface totale brute : <strong id="resGrossArea">0</strong> m²</p>
+        <p>Surface des ouvertures déduite : <strong id="resSubtractedArea" style="color: #d9534f;">0</strong> m²</p>
+        <p style="font-size: 1.1em;">Surface nette à peindre : <strong id="resNetArea" style="color: #ffb703;">0</strong> m²</p>
+        <p style="font-size: 1.2em; margin-top: 10px; font-weight: bold; border-top: 1px solid #dde1e5; padding-top: 10px;">
+            Quantité totale requise (+10% perte) : <span id="resTotalQuantity" style="color: #ffb703;">0</span> unité(s)
+        </p>
+    </div>
+</div>
+
+<script>
+function calculateWallCovering() {
+    // Récupération des valeurs
+    const width = parseFloat(document.getElementById('wallWidth').value) || 0;
+    const height = parseFloat(document.getElementById('wallHeight').value) || 0;
+    const doors = parseInt(document.getElementById('doorCount').value) || 0;
+    const windows = parseInt(document.getElementById('windowCount').value) || 0;
+    const yieldPerUnit = parseFloat(document.getElementById('productYield').value) || 0;
+    const coats = parseInt(document.getElementById('coatCount').value) || 1;
+
+    if (width <= 0 || height <= 0) {
+        alert("Veuillez entrer une largeur et une hauteur valides pour les murs.");
+        return;
+    }
+
+    // Calculs des surfaces
+    const grossArea = width * height;
+    const doorArea = doors * (2.0 * 0.8);      // 1.6 m² par porte
+    const windowArea = windows * (1.2 * 1.0);  // 1.2 m² par fenêtre
+    const totalDeductions = doorArea + windowArea;
+    
+    let netArea = grossArea - totalDeductions;
+    if (netArea < 0) netArea = 0; // Sécurité si trop d'ouvertures
+
+    // Calcul de la quantité de produit avec une marge de 10% pour les chutes/pertes
+    let totalQuantity = 0;
+    if (yieldPerUnit > 0) {
+        totalQuantity = ((netArea * coats) / yieldPerUnit) * 1.1;
+    }
+
+    // Affichage des résultats
+    document.getElementById('resGrossArea').innerText = grossArea.toFixed(2);
+    document.getElementById('resSubtractedArea').innerText = totalDeductions.toFixed(2);
+    document.getElementById('resNetArea').innerText = netArea.toFixed(2);
+    document.getElementById('resTotalQuantity').innerText = yieldPerUnit > 0 ? totalQuantity.toFixed(1) : "0";
+    
+    document.getElementById('wallResult').style.display = 'block';
+}
+</script>
+
