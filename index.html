@@ -3,400 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChantierPro - Calculateurs BTP Gratuits</title>
+    <title>ChantierPro - Outils & Gestion</title>
     <style>
-        :root {
-            --primary-dark: #1d1d1d;
-            --brand-yellow: #ffb703;
-            --light-bg: #f9f9f9;
-            --border-grey: #dde1e5;
-            --text-dark: #333333;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            padding: 15px;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            padding: 25px 10px;
-            background: var(--primary-dark);
-            border-radius: 8px;
-            margin-bottom: 25px;
-            border: 1px solid #2a2a2a;
-        }
-
-        header h1 {
-            color: var(--brand-yellow);
-            font-size: 1.8rem;
-            margin-bottom: 5px;
-        }
-
-        header p {
-            color: #cccccc;
-            font-size: 0.9rem;
-        }
-
-        .calculator-card {
-            background: var(--primary-dark);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 25px;
-            border: 1px solid #2a2a2a;
-        }
-
-        .calculator-card h3 {
-            color: var(--brand-yellow);
-            margin-bottom: 5px;
-            font-size: 1.2rem;
-        }
-
-        .subtitle {
-            color: #aaaaaa;
-            font-size: 0.85rem;
-            margin-bottom: 15px;
-        }
-
-        .input-group {
-            margin-bottom: 12px;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-            color: #ffffff;
-        }
-
-        .input-group input, .input-group select {
-            width: 100%;
-            padding: 10px;
-            border-radius: 4px;
-            border: 1px solid #444;
-            background: #2a2a2a;
-            color: #ffffff;
-            font-size: 1rem;
-        }
-
-        .input-group input:focus {
-            border-color: var(--brand-yellow);
-            outline: none;
-        }
-
-        hr {
-            border: 0;
-            border-top: 1px dashed #444;
-            margin: 15px 0;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            background: var(--brand-yellow);
-            border: none;
-            color: var(--primary-dark);
-            font-weight: bold;
-            font-size: 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        button:hover {
-            background: #e0a102;
-        }
-
-        .result-box {
-            margin-top: 15px;
-            padding: 15px;
-            background: #252525;
-            border-radius: 4px;
-            border-left: 4px solid var(--brand-yellow);
-        }
-
-        .result-box p {
-            margin: 6px 0;
-            font-size: 0.95rem;
-        }
-
-        .result-box strong {
-            color: var(--brand-yellow);
-        }
-
-        .shop-section {
-            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
-            border: 2px solid var(--brand-yellow);
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            margin-top: 30px;
-            margin-bottom: 20px;
-        }
-
-        .shop-section h2 {
-            color: var(--brand-yellow);
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
-
-        .product-item {
-            background: rgba(255,255,255,0.05);
-            padding: 12px;
-            border-radius: 6px;
-            margin: 10px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .btn-shop {
-            background: #27ae60;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            color: #666666;
-            font-size: 0.8rem;
-        }
+        :root { --primary-dark: #1d1d1d; --brand-yellow: #ffb703; --text: #ffffff; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #121212; color: var(--text); padding: 15px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        header { text-align: center; padding: 20px; background: var(--primary-dark); border-radius: 8px; border: 1px solid #333; margin-bottom: 20px; }
+        header h1 { color: var(--brand-yellow); }
+        .card { background: var(--primary-dark); border: 1px solid #333; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+        h3 { color: var(--brand-yellow); margin-bottom: 10px; }
+        input, textarea { width: 100%; padding: 12px; margin: 8px 0; border-radius: 4px; border: 1px solid #444; background: #2a2a2a; color: white; }
+        button { width: 100%; padding: 12px; background: var(--brand-yellow); border: none; color: #000; font-weight: bold; border-radius: 4px; cursor: pointer; margin-top: 10px; }
+        .result-box { margin-top: 15px; padding: 15px; background: #252525; border-left: 4px solid var(--brand-yellow); display: none; }
+        .checkbox-item { display: flex; align-items: center; margin: 10px 0; font-size: 0.95rem; }
+        .checkbox-item input { width: 20px; height: 20px; margin-right: 12px; }
+        .shop-item { padding: 15px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; }
+        .btn-shop { background: #27ae60; color: white; padding: 8px 12px; border-radius: 4px; text-decoration: none; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <header><h1>👷‍♂️ CHANTIERPRO</h1></header>
 
-    <header>
-        <h1>👷‍♂️ CHANTIERPRO</h1>
-        <p>Les outils indispensables des artisans du BTP</p>
-    </header>
-
-    <!-- 1. CALCULATEUR BÉTON -->
-    <div class="calculator-card">
-        <h3>Calculateur de Béton (Dalle, Fondations)</h3>
-        <p class="subtitle">Calculez le volume de béton nécessaire et le nombre de sacs de 35kg.</p>
-        <div class="input-group">
-            <label>Longueur (mètres) :</label>
-            <input type="number" id="concreteLength" placeholder="Ex: 5" step="0.01">
-        </div>
-        <div class="input-group">
-            <label>Largeur (mètres) :</label>
-            <input type="number" id="concreteWidth" placeholder="Ex: 4" step="0.01">
-        </div>
-        <div class="input-group">
-            <label>Épaisseur / Profondeur (centimètres) :</label>
-            <input type="number" id="concreteThickness" placeholder="Ex: 12" step="0.5">
-        </div>
-        <button onclick="calculateConcrete()">Calculer le Béton</button>
-        <div id="concreteResult" class="result-box" style="display:none;">
-            <p>Volume total nécessaire : <strong id="resConcreteVolume">0</strong> m³</p>
-            <p>Estimation sacs de béton prêt à l'emploi (35kg) : <strong id="resConcreteSacks">0</strong> sacs</p>
-        </div>
+    <!-- MODULES GESTION -->
+    <div class="card">
+        <h3>📋 Checklist Démarrage</h3>
+        <label class="checkbox-item"><input type="checkbox"> Eau/Élec repérées</label>
+        <label class="checkbox-item"><input type="checkbox"> Photos avant travaux</label>
+        <label class="checkbox-item"><input type="checkbox"> EPI présents</label>
+        <button onclick="document.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false)">🔄 Réinitialiser</button>
     </div>
 
-    <!-- 2. CALCULATEUR GRAVIER -->
-    <div class="calculator-card">
-        <h3>Calculateur de Gravier & Tout-venant</h3>
-        <p class="subtitle">Estimez le tonnage requis pour vos sous-couches ou cours d'accès.</p>
-        <div class="input-group">
-            <label>Surface à couvrir (m²) :</label>
-            <input type="number" id="gravelArea" placeholder="Ex: 50" step="0.1">
-        </div>
-        <div class="input-group">
-            <label>Épaisseur souhaitée (centimètres) :</label>
-            <input type="number" id="gravelThickness" placeholder="Ex: 6" step="0.5">
-        </div>
-        <button onclick="calculateGravel()">Calculer le Gravier</button>
-        <div id="gravelResult" class="result-box" style="display:none;">
-            <p>Poids total estimé : <strong id="resGravelTons">0</strong> Tonnes</p>
-            <p>Volume : <strong id="resGravelVolume">0</strong> m³</p>
-        </div>
+    <div class="card">
+        <h3>📝 Mémo de Poche</h3>
+        <textarea id="memo" rows="4" placeholder="Notes, dimensions, codes..." oninput="saveMemo()"></textarea>
     </div>
 
-    <!-- 3. CALCULATEUR CLÔTURE -->
-    <div class="calculator-card">
-        <h3>Calculateur de Clôtures & Grilles</h3>
-        <p class="subtitle">Déterminez le nombre de panneaux, de poteaux et de fixations.</p>
-        <div class="input-group">
-            <label>Longueur totale de la clôture (mètres) :</label>
-            <input type="number" id="fenceLength" placeholder="Ex: 25" step="0.1">
-        </div>
-        <div class="input-group">
-            <label>Longueur d'un panneau / grille (mètres) :</label>
-            <input type="number" id="panelLength" value="2" step="0.01">
-        </div>
-        <button onclick="calculateFence()">Calculer la Clôture</button>
-        <div id="fenceResult" class="result-box" style="display:none;">
-            <p>Nombre de panneaux requis : <strong id="resFencePanels">0</strong></p>
-            <p>Nombre de poteaux nécessaires : <strong id="resFencePosts">0</strong></p>
-        </div>
+    <!-- CALCULATEURS -->
+    <div class="card">
+        <h3>📐 Calculateur Revêtement</h3>
+        <input type="number" id="w" placeholder="Largeur (m)">
+        <input type="number" id="h" placeholder="Hauteur (m)">
+        <button onclick="calc()">Calculer Surface</button>
+        <div id="res" class="result-box">Surface nette : <span id="val">0</span> m²</div>
     </div>
 
-    <!-- 4. CALCULATEUR REVÊTEMENT MURAL -->
-    <div class="calculator-card">
-        <h3>📐 Calculateur Revêtement Mural (Peinture / Papier)</h3>
-        <p class="subtitle">Calculez la surface nette en déduisant automatiquement portes et fenêtres.</p>
-        <div class="input-group">
-            <label>Largeur totale des murs cumulée (mètres) :</label>
-            <input type="number" id="wallWidth" placeholder="Ex: 15" step="0.1">
-        </div>
-        <div class="input-group">
-            <label>Hauteur sous plafond (mètres) :</label>
-            <input type="number" id="wallHeight" placeholder="Ex: 2.5" step="0.1">
-        </div>
-        <hr>
-        <h4 style="color: var(--brand-yellow); font-size: 0.95rem; margin-bottom: 8px;">🚪 Ouvertures à déduire :</h4>
-        <div class="input-group">
-            <label>Nombre de portes standard (2m x 0.8m) :</label>
-            <input type="number" id="doorCount" value="0" min="0">
-        </div>
-        <div class="input-group">
-            <label>Nombre de fenêtres standard (1.2m x 1m) :</label>
-            <input type="number" id="windowCount" value="0" min="0">
-        </div>
-        <hr>
-        <div class="input-group">
-            <label>Rendement du produit (m² par Litre ou par rouleau) :</label>
-            <input type="number" id="productYield" placeholder="Ex: 10" step="0.1">
-        </div>
-        <div class="input-group">
-            <label>Nombre de couches :</label>
-            <input type="number" id="coatCount" value="2" min="1">
-        </div>
-        <button onclick="calculateWallCovering()">Calculer le Besoin</button>
-        <div id="wallResult" class="result-box" style="display:none;">
-            <p>Surface brute totale : <strong id="resGrossArea">0</strong> m²</p>
-            <p>Ouvertures soustraites : <strong id="resSubtractedArea">0</strong> m²</p>
-            <p>Surface nette finale : <strong id="resNetArea">0</strong> m²</p>
-            <p style="font-weight: bold; font-size: 1.05rem; margin-top: 8px; border-top: 1px solid #444; padding-top: 8px;">
-                Quantité estimée requise (+10% perte) : <strong id="resTotalQuantity">0</strong> unité(s)
-            </p>
-        </div>
+    <!-- BOUTIQUE -->
+    <div class="card">
+        <h3>💼 Catalogue Pro</h3>
+        <div class="shop-item"><span>Modèle Devis Auto</span><a href="#" class="btn-shop">14.90 €</a></div>
+        <div class="shop-item"><span>Trame Facture</span><a href="#" class="btn-shop">9.90 €</a></div>
     </div>
-
-    <!-- ESPACE BOUTIQUE / PACK PRO -->
-    <div class="shop-section">
-        <h2>💼 Votre Catalogue Professionnel</h2>
-        <p style="color: #eee; font-size: 0.9rem; margin-bottom: 15px;">Téléchargez nos trames automatisées pour éditer vos documents clients en 2 minutes.</p>
-        
-        <div class="product-item">
-            <div style="text-align: left;">
-                <p style="font-weight: bold;">Modèle de Devis BTP Excel/Word</p>
-                <p style="font-size: 0.8rem; color: #bbb;">Calcul automatique de la TVA et totaux</p>
-            </div>
-            <a href="#" class="btn-shop">14.90 €</a>
-        </div>
-
-        <div class="product-item">
-            <div style="text-align: left;">
-                <p style="font-weight: bold;">Trame de Facture Automatique</p>
-                <p style="font-size: 0.8rem; color: #bbb;">Design pro assorti, mentions obligatoires</p>
-            </div>
-            <a href="#" class="btn-shop">9.90 €</a>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 ChantierPro - Tous droits réservés.</p>
-    </footer>
-
 </div>
 
 <script>
-// SCRIPTS DE CALCUL
-function calculateConcrete() {
-    var l = parseFloat(document.getElementById('concreteLength').value) || 0;
-    var w = parseFloat(document.getElementById('concreteWidth').value) || 0;
-    var t = parseFloat(document.getElementById('concreteThickness').value) || 0;
-
-    if(l <= 0 || w <= 0 || t <= 0) { alert("Remplissez tous les champs béton."); return; }
-
-    var volume = l * w * (t / 100);
-    // 1m3 de béton = ~65 sacs de 35kg prêt à l'emploi
-    var sacks = Math.ceil(volume * 65);
-
-    document.getElementById('resConcreteVolume').innerText = volume.toFixed(2);
-    document.getElementById('resConcreteSacks').innerText = sacks;
-    document.getElementById('concreteResult').style.display = 'block';
-}
-
-function calculateGravel() {
-    var area = parseFloat(document.getElementById('gravelArea').value) || 0;
-    var thickness = parseFloat(document.getElementById('gravelThickness').value) || 0;
-
-    if(area <= 0 || thickness <= 0) { alert("Remplissez tous les champs gravier."); return; }
-
-    var volume = area * (thickness / 100);
-    // Densité moyenne du gravier/tout-venant compacté : ~1.65 tonne / m3
-    var tons = volume * 1.65;
-
-    document.getElementById('resGravelTons').innerText = tons.toFixed(2);
-    document.getElementById('resGravelVolume').innerText = volume.toFixed(2);
-    document.getElementById('gravelResult').style.display = 'block';
-}
-
-function calculateFence() {
-    var fLength = parseFloat(document.getElementById('fenceLength').value) || 0;
-    var pLength = parseFloat(document.getElementById('panelLength').value) || 2;
-
-    if(fLength <= 0 || pLength <= 0) { alert("Remplissez la longueur de clôture."); return; }
-
-    var panels = Math.ceil(fLength / pLength);
-    var posts = panels + 1; // Un poteau de plus que de panneaux pour fermer la clôture
-
-    document.getElementById('resFencePanels').innerText = panels;
-    document.getElementById('resFencePosts').innerText = posts;
-    document.getElementById('fenceResult').style.display = 'block';
-}
-
-function calculateWallCovering() {
-    var width = parseFloat(document.getElementById('wallWidth').value) || 0;
-    var height = parseFloat(document.getElementById('wallHeight').value) || 0;
-    var doors = parseInt(document.getElementById('doorCount').value) || 0;
-    var windows = parseInt(document.getElementById('windowCount').value) || 0;
-    var yieldPerUnit = parseFloat(document.getElementById('productYield').value) || 0;
-    var coats = parseInt(document.getElementById('coatCount').value) || 1;
-
-    if (width <= 0 || height <= 0) { alert("Veuillez entrer une largeur et hauteur valides."); return; }
-
-    var grossArea = width * height;
-    var doorArea = doors * 1.6;      
-    var windowArea = windows * 1.2;  
-    var totalDeductions = doorArea + windowArea;
-    var netArea = grossArea - totalDeductions;
-    if (netArea < 0) netArea = 0;
-
-    var totalQuantity = 0;
-    if (yieldPerUnit > 0) {
-        totalQuantity = ((netArea * coats) / yieldPerUnit) * 1.1; // +10% de marge pour chutes
-    }
-
-    document.getElementById('resGrossArea').innerText = grossArea.toFixed(2);
-    document.getElementById('resSubtractedArea').innerText = totalDeductions.toFixed(2);
-    document.getElementById('resNetArea').innerText = netArea.toFixed(2);
-    document.getElementById('resTotalQuantity').innerText = yieldPerUnit > 0 ? totalQuantity.toFixed(1) : "0";
+    // Sauvegarde auto mémo
+    window.onload = () => document.getElementById('memo').value = localStorage.getItem('proMemo') || '';
+    const saveMemo = () => localStorage.setItem('proMemo', document.getElementById('memo').value);
     
-    document.getElementById('wallResult').style.display = 'block';
-}
+    // Calcul simple
+    function calc() {
+        const res = document.getElementById('w').value * document.getElementById('h').value;
+        document.getElementById('val').innerText = res.toFixed(2);
+        document.getElementById('res').style.display = 'block';
+    }
 </script>
 
 </body>
