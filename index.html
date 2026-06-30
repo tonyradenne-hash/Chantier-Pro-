@@ -8,83 +8,21 @@
         :root {
             --bg-color: #121212;
             --card-bg: #1e1e1e;
-            --accent-color: #ffb703; /* Le jaune */
+            --accent-color: #ffb703;
             --text-color: #ffffff;
             --shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
-
+        body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; }
         .container { max-width: 500px; margin: 0 auto; }
-
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: var(--card-bg);
-            border-radius: 12px;
-            border-bottom: 4px solid var(--accent-color);
-            box-shadow: var(--shadow);
-        }
-
+        header { text-align: center; margin-bottom: 30px; padding: 20px; background: var(--card-bg); border-radius: 12px; border-bottom: 4px solid var(--accent-color); box-shadow: var(--shadow); }
         h1 { color: var(--accent-color); margin: 0; font-size: 1.8rem; }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow);
-            border: 1px solid #333;
-        }
-
+        .card { background: var(--card-bg); border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: var(--shadow); border: 1px solid #333; }
         h3 { color: var(--accent-color); margin-top: 0; font-size: 1.2rem; }
-
-        input, textarea {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            border-radius: 6px;
-            border: 1px solid #444;
-            background: #2a2a2a;
-            color: white;
-            font-size: 1rem;
-        }
-
-        button {
-            width: 100%;
-            padding: 14px;
-            background: var(--accent-color);
-            border: none;
-            color: #000;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-top: 10px;
-            font-size: 1rem;
-            transition: transform 0.1s, opacity 0.2s;
-        }
-
-        button:active { transform: scale(0.98); opacity: 0.9; }
-
-        .result-box {
-            margin-top: 15px;
-            padding: 15px;
-            background: #252525;
-            border-left: 4px solid var(--accent-color);
-            border-radius: 4px;
-            display: none;
-        }
-
+        input, textarea { width: 100%; padding: 12px; margin: 8px 0; border-radius: 6px; border: 1px solid #444; background: #2a2a2a; color: white; }
+        button { width: 100%; padding: 14px; background: var(--accent-color); border: none; color: #000; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 10px; }
+        .result-box { margin-top: 15px; padding: 15px; background: #252525; border-left: 4px solid var(--accent-color); display: none; }
         .checkbox-item { display: flex; align-items: center; margin: 12px 0; font-size: 1rem; cursor: pointer; }
         .checkbox-item input { width: 22px; height: 22px; margin-right: 15px; accent-color: var(--accent-color); }
-        
         .shop-item { padding: 15px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; }
         .btn-shop { background: #27ae60; color: white; padding: 10px 15px; border-radius: 6px; text-decoration: none; font-weight: bold; }
     </style>
@@ -99,6 +37,7 @@
         <h3>📋 Checklist Démarrage</h3>
         <label class="checkbox-item"><input type="checkbox"> Eau/Élec repérées</label>
         <label class="checkbox-item"><input type="checkbox"> Photos avant travaux</label>
+        <label class="checkbox-item"><input type="checkbox"> Protections posées</label>
         <label class="checkbox-item"><input type="checkbox"> EPI dans le camion</label>
         <button onclick="document.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false)" style="background:#444; color:white;">🔄 Réinitialiser</button>
     </div>
@@ -109,23 +48,42 @@
         <textarea id="memo" rows="4" placeholder="Notes, dimensions, codes..." oninput="saveMemo()"></textarea>
     </div>
 
-    <!-- Calculateur -->
+    <!-- Calculateur Complet avec Ouvertures -->
     <div class="card">
-        <h3>📐 Calculateur Surface</h3>
-        <input type="number" id="w" placeholder="Largeur (m)">
-        <input type="number" id="h" placeholder="Hauteur (m)">
-        <button onclick="calc()">Calculer</button>
-        <div id="res" class="result-box">Surface nette : <span id="val">0</span> m²</div>
+        <h3>📐 Calculateur Revêtement (avec ouvertures)</h3>
+        <input type="number" id="w" placeholder="Largeur mur (m)">
+        <input type="number" id="h" placeholder="Hauteur mur (m)">
+        <input type="number" id="doors" placeholder="Nombre de portes">
+        <input type="number" id="windows" placeholder="Nombre de fenêtres">
+        <button onclick="calcFull()">Calculer Surface Nette</button>
+        <div id="res" class="result-box">Surface à couvrir : <span id="val">0</span> m²</div>
+    </div>
+
+    <!-- Boutique -->
+    <div class="card">
+        <h3>💼 Catalogue Pro</h3>
+        <div class="shop-item"><span>Modèle Devis Auto</span><a href="#" class="btn-shop">14.90 €</a></div>
+        <div class="shop-item"><span>Trame Facture</span><a href="#" class="btn-shop">9.90 €</a></div>
     </div>
 </div>
 
 <script>
+    // Mémo
     window.onload = () => document.getElementById('memo').value = localStorage.getItem('proMemo') || '';
     const saveMemo = () => localStorage.setItem('proMemo', document.getElementById('memo').value);
     
-    function calc() {
-        const res = document.getElementById('w').value * document.getElementById('h').value;
-        document.getElementById('val').innerText = res.toFixed(2);
+    // Calcul complet avec déduction des ouvertures
+    function calcFull() {
+        const w = parseFloat(document.getElementById('w').value) || 0;
+        const h = parseFloat(document.getElementById('h').value) || 0;
+        const d = parseFloat(document.getElementById('doors').value) || 0;
+        const f = parseFloat(document.getElementById('windows').value) || 0;
+        
+        // Déduction standard : Porte = 2m², Fenêtre = 1.5m²
+        let surface = (w * h) - (d * 2) - (f * 1.5);
+        if (surface < 0) surface = 0;
+        
+        document.getElementById('val').innerText = surface.toFixed(2);
         document.getElementById('res').style.display = 'block';
     }
 </script>
